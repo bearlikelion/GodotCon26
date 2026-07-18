@@ -1,0 +1,22 @@
+<div class="editor" data-snippet="menu_connect">
+<div class="ed-tabs"><span class="ed-tab active">main_menu.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">main_menu.gd &gt; _on_connect_pressed</div>
+<div class="ed-body">
+<div class="ed-line" data-l="161"><span class="ed-num">161</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_on_connect_pressed</span>() -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="162"><span class="ed-num">162</span><span class="ed-code">	<span class="g-keyword">var</span> peer: <span class="g-type">ENetMultiplayerPeer</span> = <span class="g-type">ENetMultiplayerPeer</span>.<span class="g-func">new</span>()</span></div>
+<div class="ed-line" data-l="163"><span class="ed-num">163</span><span class="ed-code">	<span class="g-keyword">var</span> error: <span class="g-type">Error</span> = peer.<span class="g-func">create_client</span>(ip_address.text, <span class="g-number">7777</span>)</span></div>
+<div class="ed-line" data-l="164"><span class="ed-num">164</span><span class="ed-code">	<span class="g-keyword">if</span> error:</span></div>
+<div class="ed-line" data-l="165"><span class="ed-num">165</span><span class="ed-code">		<span class="g-keyword">print</span>(<span class="g-string">&quot;Client Error: %s&quot;</span> % error)</span></div>
+<div class="ed-line" data-l="166"><span class="ed-num">166</span><span class="ed-code">		connection_status.text = <span class="g-string">&quot;Client Error: %s&quot;</span> % <span class="g-func">error_string</span>(error)</span></div>
+<div class="ed-line" data-l="167"><span class="ed-num">167</span><span class="ed-code">		<span class="g-keyword">return</span></span></div>
+<div class="ed-line" data-l="168"><span class="ed-num">168</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="169"><span class="ed-num">169</span><span class="ed-code">	<span class="g-type">Global</span>.ip_address = ip_address.text</span></div>
+<div class="ed-line" data-l="170"><span class="ed-num">170</span><span class="ed-code">	multiplayer.multiplayer_peer = peer</span></div>
+<div class="ed-line" data-l="171"><span class="ed-num">171</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="172"><span class="ed-num">172</span><span class="ed-code">	<span class="g-comment"># Wait for player data to sync from server before entering the lobby</span></span></div>
+<div class="ed-line" data-l="173"><span class="ed-num">173</span><span class="ed-code">	connection_status.text = <span class="g-string">&quot;Connecting...&quot;</span></span></div>
+<div class="ed-line" data-l="174"><span class="ed-num">174</span><span class="ed-code">	multiplayer.connection_failed.<span class="g-func">connect</span>(_on_connection_failed)</span></div>
+<div class="ed-line" data-l="175"><span class="ed-num">175</span><span class="ed-code">	<span class="g-type">Global</span>.players_synced.<span class="g-func">connect</span>(_on_players_synced)</span></div>
+</div>
+<div class="ed-status"><span>Scenes/MainMenu/main_menu.gd</span><span class="ed-status-r">175:1 &nbsp; GDScript</span></div>
+</div>

@@ -1,0 +1,270 @@
+{
+  "steaminit_full": {
+    "file": "Singletons/SteamInit.gd",
+    "tab": "SteamInit.gd",
+    "segments": [
+      [
+        1,
+        20
+      ]
+    ],
+    "end": 20,
+    "crumb": "SteamInit.gd > _ready"
+  },
+  "global_peer_connected": {
+    "file": "Singletons/Global.gd",
+    "tab": "Global.gd",
+    "segments": [
+      [
+        28,
+        39
+      ]
+    ],
+    "end": 39,
+    "crumb": "Global.gd > _on_peer_connected"
+  },
+  "global_connected": {
+    "file": "Singletons/Global.gd",
+    "tab": "Global.gd",
+    "segments": [
+      [
+        60,
+        77
+      ]
+    ],
+    "end": 77,
+    "crumb": "Global.gd > _on_connected_to_server"
+  },
+  "global_send_player": {
+    "file": "Singletons/Global.gd",
+    "tab": "Global.gd",
+    "segments": [
+      [
+        80,
+        87
+      ]
+    ],
+    "end": 87,
+    "crumb": "Global.gd > send_player_to_server"
+  },
+  "global_add_local_player": {
+    "file": "Singletons/Global.gd",
+    "tab": "Global.gd",
+    "segments": [
+      [
+        167,
+        189
+      ]
+    ],
+    "end": 189,
+    "crumb": "Global.gd > add_local_player"
+  },
+  "global_set_character": {
+    "file": "Singletons/Global.gd",
+    "tab": "Global.gd",
+    "segments": [
+      [
+        102,
+        112
+      ]
+    ],
+    "end": 112,
+    "crumb": "Global.gd > set_player_character"
+  },
+  "menu_backend_enum": {
+    "file": "Scenes/MainMenu/main_menu.gd",
+    "tab": "main_menu.gd",
+    "segments": [
+      [
+        4,
+        4
+      ],
+      [
+        12,
+        12
+      ],
+      [
+        144,
+        145
+      ]
+    ],
+    "end": 145,
+    "crumb": "main_menu.gd > MultiplayerBackend"
+  },
+  "menu_host_game": {
+    "file": "Scenes/MainMenu/main_menu.gd",
+    "tab": "main_menu.gd",
+    "segments": [
+      [
+        144,
+        158
+      ]
+    ],
+    "end": 158,
+    "crumb": "main_menu.gd > _on_host_game_pressed"
+  },
+  "menu_connect": {
+    "file": "Scenes/MainMenu/main_menu.gd",
+    "tab": "main_menu.gd",
+    "segments": [
+      [
+        161,
+        175
+      ]
+    ],
+    "end": 175,
+    "crumb": "main_menu.gd > _on_connect_pressed"
+  },
+  "menu_lobby_created": {
+    "file": "Scenes/MainMenu/main_menu.gd",
+    "tab": "main_menu.gd",
+    "segments": [
+      [
+        62,
+        76
+      ]
+    ],
+    "end": 76,
+    "crumb": "main_menu.gd > _on_lobby_created"
+  },
+  "menu_lobby_joined": {
+    "file": "Scenes/MainMenu/main_menu.gd",
+    "tab": "main_menu.gd",
+    "segments": [
+      [
+        88,
+        89
+      ],
+      [
+        95,
+        106
+      ]
+    ],
+    "end": 106,
+    "crumb": "main_menu.gd > _on_lobby_joined"
+  },
+  "menu_get_lobbies": {
+    "file": "Scenes/MainMenu/main_menu.gd",
+    "tab": "main_menu.gd",
+    "segments": [
+      [
+        109,
+        113
+      ]
+    ],
+    "end": 113,
+    "crumb": "main_menu.gd > get_lobbies"
+  },
+  "menu_lobby_match_list": {
+    "file": "Scenes/MainMenu/main_menu.gd",
+    "tab": "main_menu.gd",
+    "segments": [
+      [
+        46,
+        59
+      ]
+    ],
+    "end": 59,
+    "crumb": "main_menu.gd > _on_lobby_match_list"
+  },
+  "spawner_ready": {
+    "file": "Scenes/Game/player_spawner.gd",
+    "tab": "player_spawner.gd",
+    "segments": [
+      [
+        10,
+        19
+      ]
+    ],
+    "end": 19,
+    "crumb": "player_spawner.gd > _ready"
+  },
+  "spawner_spawn_player": {
+    "file": "Scenes/Game/player_spawner.gd",
+    "tab": "player_spawner.gd",
+    "segments": [
+      [
+        22,
+        28
+      ],
+      [
+        42,
+        43
+      ]
+    ],
+    "end": 43,
+    "crumb": "player_spawner.gd > spawn_player"
+  },
+  "player_ready": {
+    "file": "Scenes/Player/player.gd",
+    "tab": "player.gd",
+    "segments": [
+      [
+        37,
+        48
+      ]
+    ],
+    "end": 48,
+    "crumb": "player.gd > _ready"
+  },
+  "player_physics": {
+    "file": "Scenes/Player/player.gd",
+    "tab": "player.gd",
+    "segments": [
+      [
+        51,
+        54
+      ]
+    ],
+    "end": 54,
+    "crumb": "player.gd > _physics_process"
+  },
+  "select_ready_rpcs": {
+    "file": "Scenes/UI/character_select.gd",
+    "tab": "character_select.gd",
+    "segments": [
+      [
+        64,
+        72
+      ],
+      [
+        79,
+        82
+      ]
+    ],
+    "end": 82,
+    "crumb": "character_select.gd > _set_ready"
+  },
+  "lobby_check_all_ready": {
+    "file": "Scenes/Lobby/lobby.gd",
+    "tab": "lobby.gd",
+    "segments": [
+      [
+        72,
+        79
+      ],
+      [
+        86,
+        88
+      ],
+      [
+        91,
+        94
+      ]
+    ],
+    "end": 94,
+    "crumb": "lobby.gd > check_all_ready"
+  },
+  "game_set_infected": {
+    "file": "Scenes/Game/game.gd",
+    "tab": "game.gd",
+    "segments": [
+      [
+        284,
+        296
+      ]
+    ],
+    "end": 296,
+    "crumb": "game.gd > _set_player_infected"
+  }
+}

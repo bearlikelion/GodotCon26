@@ -1,0 +1,21 @@
+<div class="editor" data-snippet="menu_lobby_match_list">
+<div class="ed-tabs"><span class="ed-tab active">main_menu.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">main_menu.gd &gt; _on_lobby_match_list</div>
+<div class="ed-body">
+<div class="ed-line" data-l="46"><span class="ed-num">46</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_on_lobby_match_list</span>(lobbies: <span class="g-type">Array</span>) -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="47"><span class="ed-num">47</span><span class="ed-code">	<span class="g-keyword">print</span>(<span class="g-string">&quot;Lobbies Found: %s&quot;</span> % lobbies.<span class="g-func">size</span>())</span></div>
+<div class="ed-line" data-l="48"><span class="ed-num">48</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="49"><span class="ed-num">49</span><span class="ed-code">	<span class="g-keyword">for</span> lobby_id: <span class="g-keyword">int</span> <span class="g-keyword">in</span> lobbies:</span></div>
+<div class="ed-line" data-l="50"><span class="ed-num">50</span><span class="ed-code">		<span class="g-keyword">var</span> lobby_name: <span class="g-type">String</span> = <span class="g-type">Steam</span>.getLobbyData(lobby_id, <span class="g-string">&quot;name&quot;</span>)</span></div>
+<div class="ed-line" data-l="51"><span class="ed-num">51</span><span class="ed-code">		<span class="g-keyword">var</span> lobby_players: <span class="g-keyword">int</span> = <span class="g-type">Steam</span>.getNumLobbyMembers(lobby_id)</span></div>
+<div class="ed-line" data-l="52"><span class="ed-num">52</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="53"><span class="ed-num">53</span><span class="ed-code">		<span class="g-comment"># Create join lobby button</span></span></div>
+<div class="ed-line" data-l="54"><span class="ed-num">54</span><span class="ed-code">		<span class="g-keyword">var</span> lobby_button: <span class="g-type">Button</span> = <span class="g-type">Button</span>.<span class="g-func">new</span>()</span></div>
+<div class="ed-line" data-l="55"><span class="ed-num">55</span><span class="ed-code">		lobby_button.text = <span class="g-string">&quot;%s - %d players&quot;</span> % [lobby_name, lobby_players]</span></div>
+<div class="ed-line" data-l="56"><span class="ed-num">56</span><span class="ed-code">		lobby_button.name = <span class="g-string">&quot;lobby_&quot;</span> + <span class="g-keyword">str</span>(lobby_id)</span></div>
+<div class="ed-line" data-l="57"><span class="ed-num">57</span><span class="ed-code">		lobby_button.<span class="g-func">add_to_group</span>(<span class="g-string">&quot;lobby_button&quot;</span>)</span></div>
+<div class="ed-line" data-l="58"><span class="ed-num">58</span><span class="ed-code">		lobby_button.pressed.<span class="g-func">connect</span>(join_lobby.<span class="g-func">bind</span>(lobby_id))</span></div>
+<div class="ed-line" data-l="59"><span class="ed-num">59</span><span class="ed-code">		lobby_list.<span class="g-func">add_child</span>(lobby_button)</span></div>
+</div>
+<div class="ed-status"><span>Scenes/MainMenu/main_menu.gd</span><span class="ed-status-r">59:1 &nbsp; GDScript</span></div>
+</div>

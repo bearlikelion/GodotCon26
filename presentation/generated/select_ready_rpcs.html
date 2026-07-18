@@ -1,0 +1,21 @@
+<div class="editor" data-snippet="select_ready_rpcs">
+<div class="ed-tabs"><span class="ed-tab active">character_select.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">character_select.gd &gt; _set_ready</div>
+<div class="ed-body">
+<div class="ed-line" data-l="64"><span class="ed-num">64</span><span class="ed-code"><span class="g-comment"># Called when ready button is toggled</span></span></div>
+<div class="ed-line" data-l="65"><span class="ed-num">65</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_on_ready_button_toggled</span>(toggled_on: <span class="g-keyword">bool</span>) -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="66"><span class="ed-num">66</span><span class="ed-code">	_set_ready.<span class="g-func">rpc</span>(toggled_on)</span></div>
+<div class="ed-line" data-l="67"><span class="ed-num">67</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="68"><span class="ed-num">68</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="69"><span class="ed-num">69</span><span class="ed-code"><span class="g-comment"># Updates ready state across all clients</span></span></div>
+<div class="ed-line" data-l="70"><span class="ed-num">70</span><span class="ed-code"><span class="g-annotation">@rpc</span>(<span class="g-string">&quot;any_peer&quot;</span>, <span class="g-string">&quot;call_local&quot;</span>, <span class="g-string">&quot;reliable&quot;</span>)</span></div>
+<div class="ed-line" data-l="71"><span class="ed-num">71</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_set_ready</span>(player_ready: <span class="g-keyword">bool</span>) -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="72"><span class="ed-num">72</span><span class="ed-code">	is_ready = player_ready</span></div>
+<div class="ed-line ed-gap"><span class="ed-num">&#8942;</span><span class="ed-code g-comment"># ...</span></div>
+<div class="ed-line" data-l="79"><span class="ed-num">79</span><span class="ed-code">	<span class="g-comment"># Notify lobby to check if all players are ready</span></span></div>
+<div class="ed-line" data-l="80"><span class="ed-num">80</span><span class="ed-code">	<span class="g-keyword">var</span> lobby: <span class="g-type">Lobby</span> = <span class="g-func">get_tree</span>().<span class="g-func">get_first_node_in_group</span>(<span class="g-string">&quot;lobby&quot;</span>)</span></div>
+<div class="ed-line" data-l="81"><span class="ed-num">81</span><span class="ed-code">	<span class="g-keyword">if</span> lobby:</span></div>
+<div class="ed-line" data-l="82"><span class="ed-num">82</span><span class="ed-code">		lobby.<span class="g-func">check_all_ready</span>()</span></div>
+</div>
+<div class="ed-status"><span>Scenes/UI/character_select.gd</span><span class="ed-status-r">82:1 &nbsp; GDScript</span></div>
+</div>

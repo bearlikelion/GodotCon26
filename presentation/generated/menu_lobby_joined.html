@@ -1,0 +1,22 @@
+<div class="editor" data-snippet="menu_lobby_joined">
+<div class="ed-tabs"><span class="ed-tab active">main_menu.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">main_menu.gd &gt; _on_lobby_joined</div>
+<div class="ed-body">
+<div class="ed-line" data-l="88"><span class="ed-num">88</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_on_lobby_joined</span>(lobby_id: <span class="g-keyword">int</span>, _permissions: <span class="g-keyword">int</span>, _locked: <span class="g-keyword">bool</span>, response: <span class="g-keyword">int</span>) -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="89"><span class="ed-num">89</span><span class="ed-code">	<span class="g-keyword">if</span> response != <span class="g-type">Steam</span>.<span class="g-const">CHAT_ROOM_ENTER_RESPONSE_SUCCESS</span>:</span></div>
+<div class="ed-line ed-gap"><span class="ed-num">&#8942;</span><span class="ed-code g-comment"># ...</span></div>
+<div class="ed-line" data-l="95"><span class="ed-num">95</span><span class="ed-code">	<span class="g-keyword">if</span> <span class="g-type">Steam</span>.getLobbyOwner(lobby_id) == <span class="g-type">Steam</span>.getSteamID():</span></div>
+<div class="ed-line" data-l="96"><span class="ed-num">96</span><span class="ed-code">		<span class="g-type">Global</span>.<span class="g-func">change_level</span>(<span class="g-string">&quot;res://Scenes/Lobby/lobby.tscn&quot;</span>)</span></div>
+<div class="ed-line" data-l="97"><span class="ed-num">97</span><span class="ed-code">		<span class="g-keyword">return</span></span></div>
+<div class="ed-line" data-l="98"><span class="ed-num">98</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="99"><span class="ed-num">99</span><span class="ed-code">	<span class="g-type">SteamInit</span>.lobby_id = lobby_id</span></div>
+<div class="ed-line" data-l="100"><span class="ed-num">100</span><span class="ed-code">	<span class="g-type">SteamInit</span>.peer.<span class="g-func">connect_to_lobby</span>(lobby_id)</span></div>
+<div class="ed-line" data-l="101"><span class="ed-num">101</span><span class="ed-code">	multiplayer.multiplayer_peer = <span class="g-type">SteamInit</span>.peer</span></div>
+<div class="ed-line" data-l="102"><span class="ed-num">102</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="103"><span class="ed-num">103</span><span class="ed-code">	<span class="g-comment"># Wait for player data to sync from server before entering the lobby</span></span></div>
+<div class="ed-line" data-l="104"><span class="ed-num">104</span><span class="ed-code">	connection_status.text = <span class="g-string">&quot;Connecting...&quot;</span></span></div>
+<div class="ed-line" data-l="105"><span class="ed-num">105</span><span class="ed-code">	multiplayer.connection_failed.<span class="g-func">connect</span>(_on_connection_failed, <span class="g-const">CONNECT_ONE_SHOT</span>)</span></div>
+<div class="ed-line" data-l="106"><span class="ed-num">106</span><span class="ed-code">	<span class="g-type">Global</span>.players_synced.<span class="g-func">connect</span>(_on_players_synced, <span class="g-const">CONNECT_ONE_SHOT</span>)</span></div>
+</div>
+<div class="ed-status"><span>Scenes/MainMenu/main_menu.gd</span><span class="ed-status-r">106:1 &nbsp; GDScript</span></div>
+</div>

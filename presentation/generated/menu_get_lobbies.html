@@ -1,0 +1,12 @@
+<div class="editor" data-snippet="menu_get_lobbies">
+<div class="ed-tabs"><span class="ed-tab active">main_menu.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">main_menu.gd &gt; get_lobbies</div>
+<div class="ed-body">
+<div class="ed-line" data-l="109"><span class="ed-num">109</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">get_lobbies</span>() -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="110"><span class="ed-num">110</span><span class="ed-code">	<span class="g-keyword">print</span>(<span class="g-string">&quot;Requesting lobby list&quot;</span>)</span></div>
+<div class="ed-line" data-l="111"><span class="ed-num">111</span><span class="ed-code">	<span class="g-type">Steam</span>.addRequestLobbyListDistanceFilter(<span class="g-type">Steam</span>.<span class="g-const">LOBBY_DISTANCE_FILTER_WORLDWIDE</span>) <span class="g-comment"># Get ALL lobbies</span></span></div>
+<div class="ed-line" data-l="112"><span class="ed-num">112</span><span class="ed-code">	<span class="g-type">Steam</span>.addRequestLobbyListStringFilter(<span class="g-string">&quot;game&quot;</span>, <span class="g-string">&quot;GodotCootiesMPTutorial&quot;</span>, <span class="g-type">Steam</span>.<span class="g-type">LobbyComparison</span>.<span class="g-const">LOBBY_COMPARISON_EQUAL</span>)</span></div>
+<div class="ed-line" data-l="113"><span class="ed-num">113</span><span class="ed-code">	<span class="g-type">Steam</span>.requestLobbyList()</span></div>
+</div>
+<div class="ed-status"><span>Scenes/MainMenu/main_menu.gd</span><span class="ed-status-r">113:1 &nbsp; GDScript</span></div>
+</div>

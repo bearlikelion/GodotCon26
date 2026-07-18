@@ -1,0 +1,22 @@
+<div class="editor" data-snippet="menu_lobby_created">
+<div class="ed-tabs"><span class="ed-tab active">main_menu.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">main_menu.gd &gt; _on_lobby_created</div>
+<div class="ed-body">
+<div class="ed-line" data-l="62"><span class="ed-num">62</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_on_lobby_created</span>(connected: <span class="g-keyword">int</span>, lobby_id: <span class="g-keyword">int</span>) -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="63"><span class="ed-num">63</span><span class="ed-code">	<span class="g-keyword">if</span> connected == <span class="g-number">1</span>:</span></div>
+<div class="ed-line" data-l="64"><span class="ed-num">64</span><span class="ed-code">		<span class="g-keyword">print</span>(<span class="g-string">&quot;Created lobby %s&quot;</span> % lobby_id)</span></div>
+<div class="ed-line" data-l="65"><span class="ed-num">65</span><span class="ed-code">		<span class="g-type">SteamInit</span>.lobby_id = lobby_id</span></div>
+<div class="ed-line" data-l="66"><span class="ed-num">66</span><span class="ed-code">		<span class="g-type">SteamInit</span>.peer.<span class="g-func">host_with_lobby</span>(lobby_id) <span class="g-comment"># Use Steam MultiplayerPeer</span></span></div>
+<div class="ed-line" data-l="67"><span class="ed-num">67</span><span class="ed-code">		multiplayer.multiplayer_peer = <span class="g-type">SteamInit</span>.peer</span></div>
+<div class="ed-line" data-l="68"><span class="ed-num">68</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="69"><span class="ed-num">69</span><span class="ed-code">		<span class="g-type">Steam</span>.setLobbyJoinable(lobby_id, <span class="g-keyword">true</span>)</span></div>
+<div class="ed-line" data-l="70"><span class="ed-num">70</span><span class="ed-code">		<span class="g-type">Steam</span>.setLobbyData(lobby_id, <span class="g-string">&quot;name&quot;</span>, <span class="g-type">Steam</span>.getPersonaName() + <span class="g-string">&quot;&#x27;s lobby&quot;</span>)</span></div>
+<div class="ed-line" data-l="71"><span class="ed-num">71</span><span class="ed-code">		<span class="g-type">Steam</span>.setLobbyData(lobby_id, <span class="g-string">&quot;game&quot;</span>, <span class="g-string">&quot;GodotCootiesMPTutorial&quot;</span>)</span></div>
+<div class="ed-line" data-l="72"><span class="ed-num">72</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="73"><span class="ed-num">73</span><span class="ed-code">		<span class="g-keyword">var</span> set_relay: <span class="g-keyword">bool</span> = <span class="g-type">Steam</span>.allowP2PPacketRelay(<span class="g-keyword">true</span>)</span></div>
+<div class="ed-line" data-l="74"><span class="ed-num">74</span><span class="ed-code">		<span class="g-keyword">print</span>(<span class="g-string">&quot;Allowing Steam to relay backup: %s&quot;</span> % set_relay)</span></div>
+<div class="ed-line" data-l="75"><span class="ed-num">75</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="76"><span class="ed-num">76</span><span class="ed-code">		<span class="g-type">Global</span>.<span class="g-func">add_local_player</span>()</span></div>
+</div>
+<div class="ed-status"><span>Scenes/MainMenu/main_menu.gd</span><span class="ed-status-r">76:1 &nbsp; GDScript</span></div>
+</div>

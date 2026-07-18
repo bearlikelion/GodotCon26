@@ -1,0 +1,24 @@
+<div class="editor" data-snippet="lobby_check_all_ready">
+<div class="ed-tabs"><span class="ed-tab active">lobby.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">lobby.gd &gt; check_all_ready</div>
+<div class="ed-body">
+<div class="ed-line" data-l="72"><span class="ed-num">72</span><span class="ed-code"><span class="g-comment"># Checks if all players are ready and starts the game</span></span></div>
+<div class="ed-line" data-l="73"><span class="ed-num">73</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">check_all_ready</span>() -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="74"><span class="ed-num">74</span><span class="ed-code">	<span class="g-comment"># Only server should check and start game</span></span></div>
+<div class="ed-line" data-l="75"><span class="ed-num">75</span><span class="ed-code">	<span class="g-keyword">if</span> <span class="g-keyword">not</span> multiplayer.<span class="g-func">is_server</span>():</span></div>
+<div class="ed-line" data-l="76"><span class="ed-num">76</span><span class="ed-code">		<span class="g-keyword">return</span></span></div>
+<div class="ed-line" data-l="77"><span class="ed-num">77</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="78"><span class="ed-num">78</span><span class="ed-code">	<span class="g-keyword">var</span> all_ready: <span class="g-keyword">bool</span> = <span class="g-keyword">true</span></span></div>
+<div class="ed-line" data-l="79"><span class="ed-num">79</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line ed-gap"><span class="ed-num">&#8942;</span><span class="ed-code g-comment"># ...</span></div>
+<div class="ed-line" data-l="86"><span class="ed-num">86</span><span class="ed-code">	<span class="g-keyword">if</span> all_ready <span class="g-keyword">and</span> players.<span class="g-func">get_child_count</span>() &gt; <span class="g-number">0</span>:</span></div>
+<div class="ed-line" data-l="87"><span class="ed-num">87</span><span class="ed-code">		<span class="g-keyword">print</span>(<span class="g-string">&quot;All players ready! Starting game...&quot;</span>)</span></div>
+<div class="ed-line" data-l="88"><span class="ed-num">88</span><span class="ed-code">		_start_game.<span class="g-func">rpc</span>()</span></div>
+<div class="ed-line ed-gap"><span class="ed-num">&#8942;</span><span class="ed-code g-comment"># ...</span></div>
+<div class="ed-line" data-l="91"><span class="ed-num">91</span><span class="ed-code"><span class="g-comment"># Starts the game on all clients</span></span></div>
+<div class="ed-line" data-l="92"><span class="ed-num">92</span><span class="ed-code"><span class="g-annotation">@rpc</span>(<span class="g-string">&quot;authority&quot;</span>, <span class="g-string">&quot;call_local&quot;</span>, <span class="g-string">&quot;reliable&quot;</span>)</span></div>
+<div class="ed-line" data-l="93"><span class="ed-num">93</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_start_game</span>() -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="94"><span class="ed-num">94</span><span class="ed-code">	<span class="g-type">Global</span>.<span class="g-func">change_level</span>(<span class="g-string">&quot;res://Scenes/Game/game.tscn&quot;</span>)</span></div>
+</div>
+<div class="ed-status"><span>Scenes/Lobby/lobby.gd</span><span class="ed-status-r">94:1 &nbsp; GDScript</span></div>
+</div>

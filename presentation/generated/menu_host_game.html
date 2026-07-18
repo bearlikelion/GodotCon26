@@ -1,0 +1,22 @@
+<div class="editor" data-snippet="menu_host_game">
+<div class="ed-tabs"><span class="ed-tab active">main_menu.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">main_menu.gd &gt; _on_host_game_pressed</div>
+<div class="ed-body">
+<div class="ed-line" data-l="144"><span class="ed-num">144</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_on_host_game_pressed</span>() -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="145"><span class="ed-num">145</span><span class="ed-code">	<span class="g-keyword">match</span> backend.selected:</span></div>
+<div class="ed-line" data-l="146"><span class="ed-num">146</span><span class="ed-code">		<span class="g-type">MultiplayerBackend</span>.<span class="g-const">ENET</span>:</span></div>
+<div class="ed-line" data-l="147"><span class="ed-num">147</span><span class="ed-code">			<span class="g-keyword">print</span>(<span class="g-string">&quot;Creating ENET Server&quot;</span>)</span></div>
+<div class="ed-line" data-l="148"><span class="ed-num">148</span><span class="ed-code">			<span class="g-keyword">var</span> peer: <span class="g-type">ENetMultiplayerPeer</span> = <span class="g-type">ENetMultiplayerPeer</span>.<span class="g-func">new</span>()</span></div>
+<div class="ed-line" data-l="149"><span class="ed-num">149</span><span class="ed-code">			<span class="g-keyword">var</span> error: <span class="g-type">Error</span> = peer.<span class="g-func">create_server</span>(<span class="g-number">7777</span>, <span class="g-number">4</span>)</span></div>
+<div class="ed-line" data-l="150"><span class="ed-num">150</span><span class="ed-code">			<span class="g-keyword">if</span> error:</span></div>
+<div class="ed-line" data-l="151"><span class="ed-num">151</span><span class="ed-code">				<span class="g-keyword">print</span>(<span class="g-string">&quot;Server Error: %s&quot;</span> % error)</span></div>
+<div class="ed-line" data-l="152"><span class="ed-num">152</span><span class="ed-code">			<span class="g-keyword">else</span>:</span></div>
+<div class="ed-line" data-l="153"><span class="ed-num">153</span><span class="ed-code">				multiplayer.multiplayer_peer = peer</span></div>
+<div class="ed-line" data-l="154"><span class="ed-num">154</span><span class="ed-code">				<span class="g-type">Global</span>.<span class="g-func">add_local_player</span>()</span></div>
+<div class="ed-line" data-l="155"><span class="ed-num">155</span><span class="ed-code">				<span class="g-type">Global</span>.<span class="g-func">change_level</span>(<span class="g-string">&quot;res://Scenes/Lobby/lobby.tscn&quot;</span>)</span></div>
+<div class="ed-line" data-l="156"><span class="ed-num">156</span><span class="ed-code">		<span class="g-type">MultiplayerBackend</span>.<span class="g-const">STEAM</span>:</span></div>
+<div class="ed-line" data-l="157"><span class="ed-num">157</span><span class="ed-code">			<span class="g-keyword">print</span>(<span class="g-string">&quot;Hosting Steam Lobby&quot;</span>)</span></div>
+<div class="ed-line" data-l="158"><span class="ed-num">158</span><span class="ed-code">			<span class="g-type">Steam</span>.createLobby(<span class="g-type">Steam</span>.<span class="g-type">LobbyType</span>.<span class="g-const">LOBBY_TYPE_PUBLIC</span>, <span class="g-number">4</span>)</span></div>
+</div>
+<div class="ed-status"><span>Scenes/MainMenu/main_menu.gd</span><span class="ed-status-r">158:1 &nbsp; GDScript</span></div>
+</div>

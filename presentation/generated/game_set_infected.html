@@ -1,0 +1,20 @@
+<div class="editor" data-snippet="game_set_infected">
+<div class="ed-tabs"><span class="ed-tab active">game.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">game.gd &gt; _set_player_infected</div>
+<div class="ed-body">
+<div class="ed-line" data-l="284"><span class="ed-num">284</span><span class="ed-code"><span class="g-comment"># RPC: Set player infection state</span></span></div>
+<div class="ed-line" data-l="285"><span class="ed-num">285</span><span class="ed-code"><span class="g-annotation">@rpc</span>(<span class="g-string">&quot;authority&quot;</span>, <span class="g-string">&quot;call_local&quot;</span>, <span class="g-string">&quot;reliable&quot;</span>)</span></div>
+<div class="ed-line" data-l="286"><span class="ed-num">286</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_set_player_infected</span>(peer_id: <span class="g-keyword">int</span>, infected: <span class="g-keyword">bool</span>) -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="287"><span class="ed-num">287</span><span class="ed-code">	<span class="g-keyword">var</span> player: <span class="g-type">Player</span> = players_node.<span class="g-func">get_node_or_null</span>(<span class="g-keyword">str</span>(peer_id))</span></div>
+<div class="ed-line" data-l="288"><span class="ed-num">288</span><span class="ed-code">	<span class="g-keyword">if</span> player:</span></div>
+<div class="ed-line" data-l="289"><span class="ed-num">289</span><span class="ed-code">		player.<span class="g-func">set_infected</span>(infected)</span></div>
+<div class="ed-line" data-l="290"><span class="ed-num">290</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="291"><span class="ed-num">291</span><span class="ed-code">	<span class="g-keyword">if</span> hud:</span></div>
+<div class="ed-line" data-l="292"><span class="ed-num">292</span><span class="ed-code">		hud.<span class="g-func">update_infection_display</span>(peer_id, infected)</span></div>
+<div class="ed-line" data-l="293"><span class="ed-num">293</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="294"><span class="ed-num">294</span><span class="ed-code">		<span class="g-comment"># Tell the local player they are it</span></span></div>
+<div class="ed-line" data-l="295"><span class="ed-num">295</span><span class="ed-code">		<span class="g-keyword">if</span> infected <span class="g-keyword">and</span> peer_id == multiplayer.<span class="g-func">get_unique_id</span>() <span class="g-keyword">and</span> current_state == <span class="g-type">GameState</span>.<span class="g-const">PLAYING</span>:</span></div>
+<div class="ed-line" data-l="296"><span class="ed-num">296</span><span class="ed-code">			hud.<span class="g-func">show_announcement</span>(<span class="g-string">&quot;You have cooties! Tag someone!&quot;</span>)</span></div>
+</div>
+<div class="ed-status"><span>Scenes/Game/game.gd</span><span class="ed-status-r">296:1 &nbsp; GDScript</span></div>
+</div>

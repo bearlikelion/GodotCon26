@@ -1,0 +1,30 @@
+<div class="editor" data-snippet="global_add_local_player">
+<div class="ed-tabs"><span class="ed-tab active">Global.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">Global.gd &gt; add_local_player</div>
+<div class="ed-body">
+<div class="ed-line" data-l="167"><span class="ed-num">167</span><span class="ed-code"><span class="g-comment"># Add local player to the players dictionary (call this after creating server/client)</span></span></div>
+<div class="ed-line" data-l="168"><span class="ed-num">168</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">add_local_player</span>() -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="169"><span class="ed-num">169</span><span class="ed-code">	<span class="g-keyword">var</span> local_id: <span class="g-keyword">int</span> = multiplayer.<span class="g-func">get_unique_id</span>()</span></div>
+<div class="ed-line" data-l="170"><span class="ed-num">170</span><span class="ed-code">	<span class="g-keyword">print</span>(<span class="g-string">&quot;GLOBAL ADD LOCAL PLAYER: %d&quot;</span> % local_id)</span></div>
+<div class="ed-line" data-l="171"><span class="ed-num">171</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="172"><span class="ed-num">172</span><span class="ed-code">	<span class="g-comment"># Get player name from Steam if available</span></span></div>
+<div class="ed-line" data-l="173"><span class="ed-num">173</span><span class="ed-code">	<span class="g-keyword">var</span> player_name: <span class="g-type">String</span> = <span class="g-keyword">str</span>(local_id)</span></div>
+<div class="ed-line" data-l="174"><span class="ed-num">174</span><span class="ed-code">	<span class="g-keyword">if</span> <span class="g-type">SteamInit</span>.steam_running <span class="g-keyword">and</span> multiplayer.multiplayer_peer <span class="g-keyword">is</span> <span class="g-type">SteamMultiplayerPeer</span>:</span></div>
+<div class="ed-line" data-l="175"><span class="ed-num">175</span><span class="ed-code">		player_name = <span class="g-type">Steam</span>.getPersonaName()</span></div>
+<div class="ed-line" data-l="176"><span class="ed-num">176</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="177"><span class="ed-num">177</span><span class="ed-code">	<span class="g-keyword">if</span> <span class="g-keyword">not</span> players.<span class="g-func">has</span>(local_id):</span></div>
+<div class="ed-line" data-l="178"><span class="ed-num">178</span><span class="ed-code">		players[local_id] = {</span></div>
+<div class="ed-line" data-l="179"><span class="ed-num">179</span><span class="ed-code">			<span class="g-string">&quot;character&quot;</span>: -<span class="g-number">1</span>,</span></div>
+<div class="ed-line" data-l="180"><span class="ed-num">180</span><span class="ed-code">			<span class="g-string">&quot;name&quot;</span>: player_name,</span></div>
+<div class="ed-line" data-l="181"><span class="ed-num">181</span><span class="ed-code">			<span class="g-string">&quot;score&quot;</span>: <span class="g-number">0</span></span></div>
+<div class="ed-line" data-l="182"><span class="ed-num">182</span><span class="ed-code">		}</span></div>
+<div class="ed-line" data-l="183"><span class="ed-num">183</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="184"><span class="ed-num">184</span><span class="ed-code">	<span class="g-comment"># Broadcast our name to all clients</span></span></div>
+<div class="ed-line" data-l="185"><span class="ed-num">185</span><span class="ed-code">	set_player_name.<span class="g-func">rpc</span>(local_id, player_name)</span></div>
+<div class="ed-line" data-l="186"><span class="ed-num">186</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="187"><span class="ed-num">187</span><span class="ed-code">	<span class="g-comment"># Server doesn&#x27;t need to wait for sync, emit immediately</span></span></div>
+<div class="ed-line" data-l="188"><span class="ed-num">188</span><span class="ed-code">	<span class="g-keyword">if</span> multiplayer.<span class="g-func">is_server</span>():</span></div>
+<div class="ed-line" data-l="189"><span class="ed-num">189</span><span class="ed-code">		players_synced.<span class="g-func">emit</span>()</span></div>
+</div>
+<div class="ed-status"><span>Singletons/Global.gd</span><span class="ed-status-r">189:1 &nbsp; GDScript</span></div>
+</div>

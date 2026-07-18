@@ -1,0 +1,15 @@
+<div class="editor" data-snippet="global_send_player">
+<div class="ed-tabs"><span class="ed-tab active">Global.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">Global.gd &gt; send_player_to_server</div>
+<div class="ed-body">
+<div class="ed-line" data-l="80"><span class="ed-num">80</span><span class="ed-code"><span class="g-annotation">@rpc</span>(<span class="g-string">&quot;any_peer&quot;</span>, <span class="g-string">&quot;call_remote&quot;</span>, <span class="g-string">&quot;reliable&quot;</span>)</span></div>
+<div class="ed-line" data-l="81"><span class="ed-num">81</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">send_player_to_server</span>(player: <span class="g-type">Dictionary</span>) -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="82"><span class="ed-num">82</span><span class="ed-code">	<span class="g-keyword">if</span> multiplayer.<span class="g-func">is_server</span>():</span></div>
+<div class="ed-line" data-l="83"><span class="ed-num">83</span><span class="ed-code">		<span class="g-keyword">print</span>(<span class="g-string">&quot;SERVER RECEIVED PLAYER DATA&quot;</span>)</span></div>
+<div class="ed-line" data-l="84"><span class="ed-num">84</span><span class="ed-code">		<span class="g-keyword">var</span> sender_id: <span class="g-keyword">int</span> = multiplayer.<span class="g-func">get_remote_sender_id</span>()</span></div>
+<div class="ed-line" data-l="85"><span class="ed-num">85</span><span class="ed-code">		players[sender_id] = player</span></div>
+<div class="ed-line" data-l="86"><span class="ed-num">86</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="87"><span class="ed-num">87</span><span class="ed-code">		_sync_players_to_peer.<span class="g-func">rpc_id</span>(sender_id, players)</span></div>
+</div>
+<div class="ed-status"><span>Singletons/Global.gd</span><span class="ed-status-r">87:1 &nbsp; GDScript</span></div>
+</div>

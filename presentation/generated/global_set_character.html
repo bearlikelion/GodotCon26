@@ -1,0 +1,18 @@
+<div class="editor" data-snippet="global_set_character">
+<div class="ed-tabs"><span class="ed-tab active">Global.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">Global.gd &gt; set_player_character</div>
+<div class="ed-body">
+<div class="ed-line" data-l="102"><span class="ed-num">102</span><span class="ed-code"><span class="g-comment"># Set player character selection via RPC</span></span></div>
+<div class="ed-line" data-l="103"><span class="ed-num">103</span><span class="ed-code"><span class="g-annotation">@rpc</span>(<span class="g-string">&quot;any_peer&quot;</span>, <span class="g-string">&quot;call_local&quot;</span>, <span class="g-string">&quot;reliable&quot;</span>)</span></div>
+<div class="ed-line" data-l="104"><span class="ed-num">104</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">set_player_character</span>(peer_id: <span class="g-keyword">int</span>, character_index: <span class="g-keyword">int</span>) -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="105"><span class="ed-num">105</span><span class="ed-code">	<span class="g-comment"># Reject peers attempting to change another player&#x27;s character</span></span></div>
+<div class="ed-line" data-l="106"><span class="ed-num">106</span><span class="ed-code">	<span class="g-keyword">var</span> sender: <span class="g-keyword">int</span> = multiplayer.<span class="g-func">get_remote_sender_id</span>()</span></div>
+<div class="ed-line" data-l="107"><span class="ed-num">107</span><span class="ed-code">	<span class="g-keyword">if</span> sender != <span class="g-number">0</span> <span class="g-keyword">and</span> sender != peer_id:</span></div>
+<div class="ed-line" data-l="108"><span class="ed-num">108</span><span class="ed-code">		<span class="g-keyword">return</span></span></div>
+<div class="ed-line" data-l="109"><span class="ed-num">109</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="110"><span class="ed-num">110</span><span class="ed-code">	<span class="g-keyword">if</span> players.<span class="g-func">has</span>(peer_id):</span></div>
+<div class="ed-line" data-l="111"><span class="ed-num">111</span><span class="ed-code">		players[peer_id][<span class="g-string">&quot;character&quot;</span>] = character_index</span></div>
+<div class="ed-line" data-l="112"><span class="ed-num">112</span><span class="ed-code">		player_info_updated.<span class="g-func">emit</span>(peer_id)</span></div>
+</div>
+<div class="ed-status"><span>Singletons/Global.gd</span><span class="ed-status-r">112:1 &nbsp; GDScript</span></div>
+</div>

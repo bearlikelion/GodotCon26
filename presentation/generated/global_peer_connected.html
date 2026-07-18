@@ -1,0 +1,19 @@
+<div class="editor" data-snippet="global_peer_connected">
+<div class="ed-tabs"><span class="ed-tab active">Global.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">Global.gd &gt; _on_peer_connected</div>
+<div class="ed-body">
+<div class="ed-line" data-l="28"><span class="ed-num">28</span><span class="ed-code"><span class="g-comment"># Called when a peer connects</span></span></div>
+<div class="ed-line" data-l="29"><span class="ed-num">29</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_on_peer_connected</span>(peer_id: <span class="g-keyword">int</span>) -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="30"><span class="ed-num">30</span><span class="ed-code">	<span class="g-keyword">print</span>(<span class="g-string">&quot;GLOBAL PEER CONNECTED: %d&quot;</span> % peer_id)</span></div>
+<div class="ed-line" data-l="31"><span class="ed-num">31</span><span class="ed-code">	<span class="g-keyword">if</span> <span class="g-keyword">not</span> players.<span class="g-func">has</span>(peer_id):</span></div>
+<div class="ed-line" data-l="32"><span class="ed-num">32</span><span class="ed-code">		players[peer_id] = {</span></div>
+<div class="ed-line" data-l="33"><span class="ed-num">33</span><span class="ed-code">			<span class="g-string">&quot;character&quot;</span>: -<span class="g-number">1</span>,</span></div>
+<div class="ed-line" data-l="34"><span class="ed-num">34</span><span class="ed-code">			<span class="g-string">&quot;name&quot;</span>: <span class="g-keyword">str</span>(peer_id),</span></div>
+<div class="ed-line" data-l="35"><span class="ed-num">35</span><span class="ed-code">			<span class="g-string">&quot;score&quot;</span>: <span class="g-number">0</span></span></div>
+<div class="ed-line" data-l="36"><span class="ed-num">36</span><span class="ed-code">		}</span></div>
+<div class="ed-line" data-l="37"><span class="ed-num">37</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="38"><span class="ed-num">38</span><span class="ed-code">		<span class="g-keyword">if</span> multiplayer.multiplayer_peer <span class="g-keyword">is</span> <span class="g-type">SteamMultiplayerPeer</span>:</span></div>
+<div class="ed-line" data-l="39"><span class="ed-num">39</span><span class="ed-code">			get_player_from_server.<span class="g-func">rpc</span>(peer_id)</span></div>
+</div>
+<div class="ed-status"><span>Singletons/Global.gd</span><span class="ed-status-r">39:1 &nbsp; GDScript</span></div>
+</div>

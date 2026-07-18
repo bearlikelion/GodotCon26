@@ -1,0 +1,17 @@
+<div class="editor" data-snippet="spawner_spawn_player">
+<div class="ed-tabs"><span class="ed-tab active">player_spawner.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">player_spawner.gd &gt; spawn_player</div>
+<div class="ed-body">
+<div class="ed-line" data-l="22"><span class="ed-num">22</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">spawn_player</span>(peer_id: <span class="g-keyword">int</span>) -&gt; <span class="g-type">Player</span>:</span></div>
+<div class="ed-line" data-l="23"><span class="ed-num">23</span><span class="ed-code">	<span class="g-keyword">var</span> player: <span class="g-type">Player</span> = <span class="g-const">PLAYER_SCENE</span>.<span class="g-func">instantiate</span>()</span></div>
+<div class="ed-line" data-l="24"><span class="ed-num">24</span><span class="ed-code">	<span class="g-keyword">var</span> spawn_point: <span class="g-type">Marker2D</span> = spawn_points.<span class="g-func">pop_back</span>()</span></div>
+<div class="ed-line" data-l="25"><span class="ed-num">25</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="26"><span class="ed-num">26</span><span class="ed-code">	player.<span class="g-func">set_multiplayer_authority</span>(peer_id)</span></div>
+<div class="ed-line" data-l="27"><span class="ed-num">27</span><span class="ed-code">	player.name = <span class="g-keyword">str</span>(peer_id)</span></div>
+<div class="ed-line" data-l="28"><span class="ed-num">28</span><span class="ed-code">	player.global_position = spawn_point.position</span></div>
+<div class="ed-line ed-gap"><span class="ed-num">&#8942;</span><span class="ed-code g-comment"># ...</span></div>
+<div class="ed-line" data-l="42"><span class="ed-num">42</span><span class="ed-code">	player.animated_sprite_2d.sprite_frames = character_sprite</span></div>
+<div class="ed-line" data-l="43"><span class="ed-num">43</span><span class="ed-code">	<span class="g-keyword">return</span> player</span></div>
+</div>
+<div class="ed-status"><span>Scenes/Game/player_spawner.gd</span><span class="ed-status-r">43:1 &nbsp; GDScript</span></div>
+</div>

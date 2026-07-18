@@ -1,0 +1,25 @@
+<div class="editor" data-snippet="global_connected">
+<div class="ed-tabs"><span class="ed-tab active">Global.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">Global.gd &gt; _on_connected_to_server</div>
+<div class="ed-body">
+<div class="ed-line" data-l="60"><span class="ed-num">60</span><span class="ed-code"><span class="g-comment"># Called when this client successfully connects to server</span></span></div>
+<div class="ed-line" data-l="61"><span class="ed-num">61</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_on_connected_to_server</span>() -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="62"><span class="ed-num">62</span><span class="ed-code">	<span class="g-keyword">print</span>(<span class="g-string">&quot;GLOBAL CONNECTED TO SERVER&quot;</span>)</span></div>
+<div class="ed-line" data-l="63"><span class="ed-num">63</span><span class="ed-code">	<span class="g-keyword">var</span> local_id: <span class="g-keyword">int</span> = multiplayer.<span class="g-func">get_unique_id</span>()</span></div>
+<div class="ed-line" data-l="64"><span class="ed-num">64</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="65"><span class="ed-num">65</span><span class="ed-code">	<span class="g-comment"># Send our player name to the server</span></span></div>
+<div class="ed-line" data-l="66"><span class="ed-num">66</span><span class="ed-code">	<span class="g-comment"># The server will sync back to us after receiving our name</span></span></div>
+<div class="ed-line" data-l="67"><span class="ed-num">67</span><span class="ed-code">	<span class="g-keyword">var</span> player_name: <span class="g-type">String</span> = <span class="g-keyword">str</span>(local_id)</span></div>
+<div class="ed-line" data-l="68"><span class="ed-num">68</span><span class="ed-code">	<span class="g-keyword">if</span> multiplayer.multiplayer_peer <span class="g-keyword">is</span> <span class="g-type">SteamMultiplayerPeer</span>:</span></div>
+<div class="ed-line" data-l="69"><span class="ed-num">69</span><span class="ed-code">		player_name = <span class="g-type">SteamInit</span>.steam_name</span></div>
+<div class="ed-line" data-l="70"><span class="ed-num">70</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="71"><span class="ed-num">71</span><span class="ed-code">	<span class="g-type">Global</span>.players[local_id] = {</span></div>
+<div class="ed-line" data-l="72"><span class="ed-num">72</span><span class="ed-code">		<span class="g-string">&quot;character&quot;</span>: -<span class="g-number">1</span>,</span></div>
+<div class="ed-line" data-l="73"><span class="ed-num">73</span><span class="ed-code">		<span class="g-string">&quot;name&quot;</span>: player_name,</span></div>
+<div class="ed-line" data-l="74"><span class="ed-num">74</span><span class="ed-code">		<span class="g-string">&quot;score&quot;</span>: <span class="g-number">0</span></span></div>
+<div class="ed-line" data-l="75"><span class="ed-num">75</span><span class="ed-code">	}</span></div>
+<div class="ed-line" data-l="76"><span class="ed-num">76</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="77"><span class="ed-num">77</span><span class="ed-code">	send_player_to_server.<span class="g-func">rpc_id</span>(<span class="g-number">1</span>, <span class="g-type">Global</span>.players[local_id])</span></div>
+</div>
+<div class="ed-status"><span>Singletons/Global.gd</span><span class="ed-status-r">77:1 &nbsp; GDScript</span></div>
+</div>

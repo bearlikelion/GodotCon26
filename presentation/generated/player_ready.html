@@ -1,0 +1,19 @@
+<div class="editor" data-snippet="player_ready">
+<div class="ed-tabs"><span class="ed-tab active">player.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">player.gd &gt; _ready</div>
+<div class="ed-body">
+<div class="ed-line" data-l="37"><span class="ed-num">37</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_ready</span>() -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="38"><span class="ed-num">38</span><span class="ed-code">	<span class="g-comment"># Set player name from Global</span></span></div>
+<div class="ed-line" data-l="39"><span class="ed-num">39</span><span class="ed-code">	<span class="g-keyword">var</span> peer_id: <span class="g-keyword">int</span> = <span class="g-keyword">int</span>(name)</span></div>
+<div class="ed-line" data-l="40"><span class="ed-num">40</span><span class="ed-code">	<span class="g-keyword">if</span> player_name:</span></div>
+<div class="ed-line" data-l="41"><span class="ed-num">41</span><span class="ed-code">		player_name.text = <span class="g-type">Global</span>.<span class="g-func">get_player_name</span>(peer_id)</span></div>
+<div class="ed-line" data-l="42"><span class="ed-num">42</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="43"><span class="ed-num">43</span><span class="ed-code">	<span class="g-keyword">if</span> <span class="g-keyword">not</span> <span class="g-func">is_multiplayer_authority</span>():</span></div>
+<div class="ed-line" data-l="44"><span class="ed-num">44</span><span class="ed-code">		physics_interpolation_mode = <span class="g-type">Node</span>.<span class="g-const">PHYSICS_INTERPOLATION_MODE_ON</span></span></div>
+<div class="ed-line" data-l="45"><span class="ed-num">45</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="46"><span class="ed-num">46</span><span class="ed-code">	<span class="g-comment"># Server-only infection collision detection</span></span></div>
+<div class="ed-line" data-l="47"><span class="ed-num">47</span><span class="ed-code">	<span class="g-keyword">if</span> multiplayer.<span class="g-func">is_server</span>() <span class="g-keyword">and</span> infection_area:</span></div>
+<div class="ed-line" data-l="48"><span class="ed-num">48</span><span class="ed-code">		infection_area.body_entered.<span class="g-func">connect</span>(_on_infection_area_body_entered)</span></div>
+</div>
+<div class="ed-status"><span>Scenes/Player/player.gd</span><span class="ed-status-r">48:1 &nbsp; GDScript</span></div>
+</div>

@@ -1,0 +1,27 @@
+<div class="editor" data-snippet="steaminit_full">
+<div class="ed-tabs"><span class="ed-tab active">SteamInit.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">SteamInit.gd &gt; _ready</div>
+<div class="ed-body">
+<div class="ed-line" data-l="1"><span class="ed-num">1</span><span class="ed-code"><span class="g-keyword">extends</span> <span class="g-type">Node</span></span></div>
+<div class="ed-line" data-l="2"><span class="ed-num">2</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="3"><span class="ed-num">3</span><span class="ed-code"><span class="g-keyword">var</span> steam_running: <span class="g-keyword">bool</span> = <span class="g-keyword">true</span></span></div>
+<div class="ed-line" data-l="4"><span class="ed-num">4</span><span class="ed-code"><span class="g-keyword">var</span> lobby_id: <span class="g-keyword">int</span> = <span class="g-number">0</span></span></div>
+<div class="ed-line" data-l="5"><span class="ed-num">5</span><span class="ed-code"><span class="g-keyword">var</span> peer: <span class="g-type">SteamMultiplayerPeer</span> = <span class="g-type">SteamMultiplayerPeer</span>.<span class="g-func">new</span>()</span></div>
+<div class="ed-line" data-l="6"><span class="ed-num">6</span><span class="ed-code"><span class="g-keyword">var</span> steam_name: <span class="g-type">String</span></span></div>
+<div class="ed-line" data-l="7"><span class="ed-num">7</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="8"><span class="ed-num">8</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_ready</span>() -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="9"><span class="ed-num">9</span><span class="ed-code">	process_mode = <span class="g-type">Node</span>.<span class="g-const">PROCESS_MODE_ALWAYS</span></span></div>
+<div class="ed-line" data-l="10"><span class="ed-num">10</span><span class="ed-code">	<span class="g-keyword">var</span> init_steam: <span class="g-type">Dictionary</span> = <span class="g-type">Steam</span>.steamInitEx(<span class="g-number">480</span>)</span></div>
+<div class="ed-line" data-l="11"><span class="ed-num">11</span><span class="ed-code">	<span class="g-keyword">print</span>(<span class="g-string">&quot;Steam Init: %s&quot;</span> % init_steam)</span></div>
+<div class="ed-line" data-l="12"><span class="ed-num">12</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="13"><span class="ed-num">13</span><span class="ed-code">	<span class="g-keyword">if</span> init_steam[<span class="g-string">&#x27;status&#x27;</span>] &gt; <span class="g-type">Steam</span>.<span class="g-const">STEAM_API_INIT_RESULT_OK</span>:</span></div>
+<div class="ed-line" data-l="14"><span class="ed-num">14</span><span class="ed-code">		steam_running = <span class="g-keyword">false</span></span></div>
+<div class="ed-line" data-l="15"><span class="ed-num">15</span><span class="ed-code">	<span class="g-keyword">else</span>:</span></div>
+<div class="ed-line" data-l="16"><span class="ed-num">16</span><span class="ed-code">		steam_name = <span class="g-type">Steam</span>.getPersonaName()</span></div>
+<div class="ed-line" data-l="17"><span class="ed-num">17</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="18"><span class="ed-num">18</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="19"><span class="ed-num">19</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_process</span>(_delta: <span class="g-keyword">float</span>) -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="20"><span class="ed-num">20</span><span class="ed-code">	<span class="g-type">Steam</span>.<span class="g-func">run_callbacks</span>()</span></div>
+</div>
+<div class="ed-status"><span>Singletons/SteamInit.gd</span><span class="ed-status-r">20:1 &nbsp; GDScript</span></div>
+</div>
