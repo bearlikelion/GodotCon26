@@ -124,6 +124,23 @@ html, body { background: var(--bg0h); }
 .g-const { color: var(--yellow); }
 .g-nodepath { color: var(--yellow); }
 
+/* ================= scene dock (fake editor tree) ================= */
+.sd { padding: 20px 24px 26px; font-size: 27px; }
+.sd-row { display: flex; align-items: center; gap: 14px; padding: 8px 14px; border-radius: 6px; color: var(--fg); }
+.sd-row.sel { background: rgba(131,165,152,.16); box-shadow: inset 0 0 0 1px var(--blue); }
+.sd-caret { color: var(--gray); width: .8em; flex-shrink: 0; font-size: .7em; }
+.sd-ico { width: 1.2em; height: 1.2em; flex-shrink: 0; }
+.sd-name { white-space: nowrap; }
+.sd-badge { width: 1.05em; height: 1.05em; margin-left: auto; opacity: .8; }
+.sd-i1 { margin-left: 48px; } .sd-i2 { margin-left: 96px; }
+
+/* ================= node chip (class badge next to slide titles) ================= */
+.node-chip { display: inline-flex; align-items: center; gap: 14px; background: var(--bg1);
+  border: 1px solid var(--bg2); border-radius: 8px; padding: 8px 22px; font-size: 27px;
+  font-weight: 400; color: var(--fg2); text-transform: none; letter-spacing: 0;
+  vertical-align: middle; margin-left: 34px; transform: translateY(-7px); }
+.node-chip img { width: 1.25em; height: 1.25em; }
+
 /* ================= popup notes ================= */
 .note { position: absolute; left: 100%; margin-left: 26px; width: 430px;
   background: var(--bg1); border: 2px solid var(--orange); border-radius: 10px;
@@ -313,6 +330,24 @@ html, body { background: var(--bg0h); }
 </section>
 
 <section data-section="intro">
+  <h2 class="slide-head"><span class="md-h">##</span>It's reached production</h2>
+  <div class="two-col" style="max-width:1840px; margin:0 auto; align-items:center; gap:44px;">
+    <div class="term" style="width:560px; flex-shrink:0;">
+      <div class="term-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span>
+        <span class="term-title">discord :: incoming dm</span></div>
+      <img src="__DATA:img/cooties_message.png__" alt="You are going to love this. Got paid for a new project to help on. I get into the project..."
+        style="width:100%; display:block; padding:16px 22px; box-sizing:border-box; background:var(--bg0);">
+    </div>
+    <div class="term fragment" style="width:1230px;">
+      <div class="term-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span>
+        <span class="term-title">godot -e :: the paid project</span></div>
+      <img src="__DATA:img/cooties_reference.png__" alt="Godot editor showing cooties_reference.md inside the project's docs folder"
+        style="width:100%; display:block;">
+    </div>
+  </div>
+</section>
+
+<section data-section="intro">
   <h2 class="slide-head"><span class="md-h">##</span>What we'll cover</h2>
   <div class="term" style="max-width:1560px; margin:0 auto;">
     <div class="term-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span>
@@ -352,6 +387,34 @@ html, body { background: var(--bg0h); }
     </div>
     <img src="__DATA:img/folder_colors.png__" alt="Set Folder Color in the FileSystem dock"
       style="height:700px; border:1px solid var(--bg2); border-radius:10px; box-shadow:0 14px 44px rgba(0,0,0,.45);">
+  </div>
+</section>
+
+<section data-section="intro">
+  <h2 class="slide-head"><span class="md-h">##</span>One scene to rule them all</h2>
+  <div class="two-col" style="max-width:1720px; margin:0 auto; align-items:center; gap:70px;">
+    <div class="ed-wrap xs-panel" style="margin:0;">
+      <!-- @panel:main_change_level -->
+    </div>
+    <div class="term" style="width:640px; flex-shrink:0;">
+      <div class="term-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span>
+        <span class="term-title">Main.tscn :: scene tree</span></div>
+      <div class="sd">
+        <div class="sd-row"><span class="sd-caret">&#9662;</span><img class="sd-ico" src="__DATA:img/Node.svg__" alt=""><span class="sd-name">Main</span><img class="sd-badge" src="__DATA:img/Script.svg__" alt="main.gd"></div>
+        <div class="sd-row sd-i1 sel"><span class="sd-caret">&#9662;</span><img class="sd-ico" src="__DATA:img/Node.svg__" alt=""><span class="sd-name">Level</span></div>
+        <div class="sd-row sd-i2"><span class="sd-caret">&nbsp;</span><img class="sd-ico" src="__DATA:img/Control.svg__" alt=""><span class="sd-name">MainMenu</span><img class="sd-badge" src="__DATA:img/PackedScene.svg__" alt="instanced scene"></div>
+        <div class="sd-row sd-i1"><span class="sd-caret">&nbsp;</span><img class="sd-ico" src="__DATA:img/MultiplayerSpawner.svg__" alt=""><span class="sd-name">LevelSpawner</span></div>
+        <div class="sd-row sd-i1"><span class="sd-caret">&nbsp;</span><img class="sd-ico" src="__DATA:img/AudioStreamPlayer.svg__" alt=""><span class="sd-name">Music</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="notes-below">
+    <div class="note fragment" data-panel="main_change_level" data-hl="11-17"><span class="note-tag">swap, don't switch</span>
+      <code>Global.change_level()</code> emits a signal; <code>Main</code> swaps what lives under <code>$Level</code>.</div>
+    <div class="note alt fragment"><span class="note-tag">why not change_scene_to_file()?</span>
+      It tears down the whole tree at a different moment on every peer. <strong>Node paths</strong> break mid-swap: unreliable for multiplayer.</div>
+    <div class="note fragment"><span class="note-tag">same tree everywhere</span>
+      <code>Main</code> never dies: <code>/root/Main/Level</code> exists on every peer, every frame. Swaps arrive as <code>call_local</code> RPCs.</div>
   </div>
 </section>
 
@@ -590,6 +653,10 @@ html, body { background: var(--bg0h); }
         <div style="color:var(--gray); font-size:23px; margin-top:10px;">owns the mapping<br>so you don't have to</div>
       </div>
       <div style="font-size:44px; color:var(--aqua); margin-top:14px;">⇄</div>
+      <div class="fragment" style="margin-top:16px; font-size:22px; line-height:2;">
+        <div><code style="color:var(--blue);">get_steam_id_for_peer_id()</code> <span style="color:var(--aqua);">→</span></div>
+        <div><span style="color:var(--aqua);">←</span> <code style="color:var(--blue);">get_peer_id_for_steam_id()</code></div>
+      </div>
     </div>
     <div class="term" style="width:520px;">
       <div class="term-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span>
@@ -657,7 +724,7 @@ html, body { background: var(--bg0h); }
     <div class="card c-orange photo-card" style="min-height:480px; background:linear-gradient(180deg, rgba(29,32,33,.85) 0%, rgba(29,32,33,.35) 58%, rgba(29,32,33,.15) 100%), url(__DATA:img/unreliable.jpg__) center / cover no-repeat;">
       <h3>🎉 unreliable</h3>
       <ul>
-        <li>A delivery person's "best effort"</li>
+        <li>A delivery person having a bad day</li>
         <li>Positions (the Synchronizer's whole job)</li>
         <li>Particles, sounds, cosmetic events</li>
         <li>If one goes missing, another is behind it</li>
@@ -743,7 +810,7 @@ html, body { background: var(--bg0h); }
 </section>
 
 <section data-section="spawn">
-  <h2 class="slide-head"><span class="md-h">##</span>The spawner, wired up</h2>
+  <h2 class="slide-head"><span class="md-h">##</span>The spawner, wired up<span class="node-chip"><img src="__DATA:img/MultiplayerSpawner.svg__" alt="">MultiplayerSpawner</span></h2>
   <div class="two-col">
     <div class="ed-wrap xs-panel">
       <!-- @panel:spawner_ready -->
@@ -828,7 +895,7 @@ html, body { background: var(--bg0h); }
 </section>
 
 <section data-section="spawn">
-  <h2 class="slide-head"><span class="md-h">##</span>The sync config</h2>
+  <h2 class="slide-head"><span class="md-h">##</span>The sync config<span class="node-chip"><img src="__DATA:img/MultiplayerSynchronizer.svg__" alt="">MultiplayerSynchronizer</span></h2>
   <div class="two-col" style="max-width:1620px; margin:0 auto;">
     <div class="term" style="flex:1.1;">
       <div class="term-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span>
@@ -918,7 +985,7 @@ html, body { background: var(--bg0h); }
 </section>
 
 <section data-section="wrap">
-  <h2 class="slide-head"><span class="md-h">##</span>Five things to steal</h2>
+  <h2 class="slide-head"><span class="md-h">##</span>Cooties Takeaway <span style="color:var(--gray); font-size:.55em; font-weight:400;">:: five things to take home</span></h2>
   <ol class="list-steal" style="max-width:1620px; margin:0 auto;">
     <li class="fragment"><span class="what">multiplayer.multiplayer_peer</span><span class="why">one property, any backend: ENet, Steam, whatever</span></li>
     <li class="fragment"><span class="what">@rpc(who, where, how)</span><span class="why">annotations carry the whole messaging story</span></li>
@@ -935,11 +1002,12 @@ html, body { background: var(--bg0h); }
       <span class="term-title">cat shoutouts.md</span></div>
     <div class="term-body" style="font-size:28px; line-height:2;">
       <div><span class="prompt">$</span> <span class="p-cmd">cat shoutouts.md</span></div>
-      <div style="margin-top:14px;"><span class="dim" style="display:inline-block; width:200px;">built with ::</span> <span style="color:var(--aqua);">reveal.js</span> <span class="dim">+</span> <span style="color:var(--aqua);">gruvbox</span> <span class="dim">+</span> <span style="color:var(--aqua);">JetBrains Mono</span> <span class="dim">(one .html file, fully offline)</span></div>
-      <div><span class="dim" style="display:inline-block; width:200px;">community ::</span> the <span style="color:var(--blue);">Godot Discord server</span></div>
-      <div><span class="dim" style="display:inline-block; width:200px;">the crew ::</span> <span style="color:var(--green);">Nerdiful</span> <span class="dim">·</span> <span style="color:var(--yellow);">friartruck</span> <span class="dim">·</span> <span style="color:var(--purple);">swaan</span> <span class="dim">·</span> <span style="color:var(--orange);">booch</span> <span class="dim">·</span> <span style="color:var(--red);">ravier</span> <span class="dim">·</span> <span style="color:var(--aqua);">OPNewPlayer</span></div>
-      <div><span class="dim" style="display:inline-block; width:200px;">and ::</span> everyone who contributes to <strong>Godot</strong> and its <strong>documentation</strong></div>
-      <div><span class="dim" style="display:inline-block; width:200px;">you ::</span> everyone who attended <strong>GodotCon</strong> 💛</div>
+      <div style="margin-top:14px;"><span class="dim" style="display:inline-block; width:250px;">my wife ::</span> <span style="color:var(--red); font-weight:700;">Carina</span> <span class="dim">for all her love and patience with my game development</span> ❤️</div>
+      <div><span class="dim" style="display:inline-block; width:250px;">built with ::</span> <span style="color:var(--aqua);">reveal.js</span> <span class="dim">+</span> <span style="color:var(--aqua);">gruvbox</span> <span class="dim">+</span> <span style="color:var(--aqua);">JetBrains Mono</span> <span class="dim">(one .html file, fully offline)</span></div>
+      <div><span class="dim" style="display:inline-block; width:250px;">community ::</span> the <span style="color:var(--blue);">Godot Discord server</span></div>
+      <div><span class="dim" style="display:inline-block; width:250px;">the crew ::</span> <span style="color:var(--green);">Nerdiful</span> <span class="dim">·</span> <span style="color:var(--yellow);">friartruck</span> <span class="dim">·</span> <span style="color:var(--purple);">swaan</span> <span class="dim">·</span> <span style="color:var(--orange);">booch</span> <span class="dim">·</span> <span style="color:var(--red);">ravier</span> <span class="dim">·</span> <span style="color:var(--aqua);">OPNewPlayer</span></div>
+      <div><span class="dim" style="display:inline-block; width:250px;">and ::</span> everyone who contributes to <strong>Godot</strong> and its <strong>documentation</strong></div>
+      <div><span class="dim" style="display:inline-block; width:250px;">you ::</span> everyone who attended <strong style="color:var(--blue);">GodotCon</strong> 💙</div>
       <div style="margin-top:14px;"><span class="prompt">$</span> <span class="cursor"></span></div>
     </div>
   </div>

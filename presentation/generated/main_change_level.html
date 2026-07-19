@@ -1,0 +1,24 @@
+<div class="editor" data-snippet="main_change_level">
+<div class="ed-tabs"><span class="ed-tab active">main.gd<span class="ed-x">&times;</span></span></div>
+<div class="ed-crumb">main.gd &gt; _on_change_level</div>
+<div class="ed-body">
+<div class="ed-line" data-l="1"><span class="ed-num">1</span><span class="ed-code"><span class="g-keyword">class_name</span> <span class="g-type">Main</span></span></div>
+<div class="ed-line" data-l="2"><span class="ed-num">2</span><span class="ed-code"><span class="g-keyword">extends</span> <span class="g-type">Node</span></span></div>
+<div class="ed-line" data-l="3"><span class="ed-num">3</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="4"><span class="ed-num">4</span><span class="ed-code"><span class="g-annotation">@onready</span> <span class="g-keyword">var</span> level: <span class="g-type">Node</span> = <span class="g-nodepath">$Level</span></span></div>
+<div class="ed-line" data-l="5"><span class="ed-num">5</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="6"><span class="ed-num">6</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_ready</span>() -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="7"><span class="ed-num">7</span><span class="ed-code">	<span class="g-type">Global</span>.change_level_to.<span class="g-func">connect</span>(_on_change_level)</span></div>
+<div class="ed-line" data-l="8"><span class="ed-num">8</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="9"><span class="ed-num">9</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="10"><span class="ed-num">10</span><span class="ed-code"><span class="g-keyword">func</span> <span class="g-func">_on_change_level</span>(new_level_path: <span class="g-type">String</span>) -&gt; <span class="g-keyword">void</span>:</span></div>
+<div class="ed-line" data-l="11"><span class="ed-num">11</span><span class="ed-code">	<span class="g-keyword">for</span> child_level: <span class="g-type">Node</span> <span class="g-keyword">in</span> level.<span class="g-func">get_children</span>():</span></div>
+<div class="ed-line" data-l="12"><span class="ed-num">12</span><span class="ed-code">		child_level.<span class="g-func">queue_free</span>()</span></div>
+<div class="ed-line" data-l="13"><span class="ed-num">13</span><span class="ed-code">&nbsp;</span></div>
+<div class="ed-line" data-l="14"><span class="ed-num">14</span><span class="ed-code">	<span class="g-keyword">var</span> new_level_resource: <span class="g-type">Resource</span> = <span class="g-keyword">load</span>(new_level_path)</span></div>
+<div class="ed-line" data-l="15"><span class="ed-num">15</span><span class="ed-code">	<span class="g-keyword">if</span> new_level_resource:</span></div>
+<div class="ed-line" data-l="16"><span class="ed-num">16</span><span class="ed-code">		<span class="g-keyword">var</span> new_level: <span class="g-type">Node</span> = new_level_resource.<span class="g-func">instantiate</span>()</span></div>
+<div class="ed-line" data-l="17"><span class="ed-num">17</span><span class="ed-code">		level.<span class="g-func">add_child</span>(new_level)</span></div>
+</div>
+<div class="ed-status"><span>Scenes/main.gd</span><span class="ed-status-r">17:1 &nbsp; GDScript</span></div>
+</div>

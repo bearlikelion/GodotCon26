@@ -167,6 +167,18 @@
     "end": 59,
     "crumb": "main_menu.gd > _on_lobby_match_list"
   },
+  "main_change_level": {
+    "file": "Scenes/main.gd",
+    "tab": "main.gd",
+    "segments": [
+      [
+        1,
+        17
+      ]
+    ],
+    "end": 17,
+    "crumb": "main.gd > _on_change_level"
+  },
   "spawner_ready": {
     "file": "Scenes/Game/player_spawner.gd",
     "tab": "player_spawner.gd",

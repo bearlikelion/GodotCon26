@@ -40,6 +40,7 @@ MANIFEST = {
     "menu_lobby_joined":        ("Scenes/MainMenu/main_menu.gd", [(88, 89), (95, 106)], None, "main_menu.gd > _on_lobby_joined"),
     "menu_get_lobbies":         ("Scenes/MainMenu/main_menu.gd", 109, 113, "main_menu.gd > get_lobbies"),
     "menu_lobby_match_list":    ("Scenes/MainMenu/main_menu.gd",  46,  59, "main_menu.gd > _on_lobby_match_list"),
+    "main_change_level":        ("Scenes/main.gd",                 1,  17, "main.gd > _on_change_level"),
     "spawner_ready":            ("Scenes/Game/player_spawner.gd", 10,  19, "player_spawner.gd > _ready"),
     "spawner_spawn_player":     ("Scenes/Game/player_spawner.gd", [(22, 28), (42, 43)], None, "player_spawner.gd > spawn_player"),
     "player_ready":             ("Scenes/Player/player.gd",       37,  48, "player.gd > _ready"),
